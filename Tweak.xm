@@ -180,7 +180,7 @@ static void loadPrefs() {
 				badgeBackgroundColorInit = [[%c(SBWallpaperController) sharedInstance] averageColorForVariant:0];
 				CGFloat r, g, b, alpha;
 				[badgeBackgroundColorInit getRed:&r green:&g blue:&b alpha:&alpha];
-				CGFloat brightness = (r * 0.3 + g * 0.6 + b * 0.1);
+				CGFloat brightness = (r * 0.299 + g * 0.587 + b * 0.114);
 				badgeTextColorInit = brightness < 0.5 ? [UIColor whiteColor] : [UIColor blackColor];
 			}
 
