@@ -26,7 +26,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>徽章样式</string>
+			<string>角标样式</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -54,7 +54,7 @@
 			<key>key</key>
 			<string>badgeBackgroundColor</string>
 			<key>label</key>
-			<string>徽章背景颜色</string>
+			<string>角标背景颜色</string>
 			<key>supportAlpha</key>
 			<true/>
 		</dict>
@@ -70,7 +70,7 @@
 			<key>key</key>
 			<string>badgeTextColor</string>
 			<key>label</key>
-			<string>徽章文本颜色</string>
+			<string>角标文本颜色</string>
 			<key>supportAlpha</key>
 			<true/>
 		</dict>
@@ -85,8 +85,8 @@
 			<string>badgeStyle</string>
 			<key>validTitles</key>
 			<array>
-				<string>动态图标颜色</string>
-				<string>动态壁纸颜色</string>
+				<string>跟随图标颜色</string>
+				<string>跟随壁纸颜色</string>
 			</array>
 			<key>validValues</key>
 			<array>
@@ -98,13 +98,13 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>徽章阴影透明度</string>
+			<string>角标阴影透明度</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>徽章阴影（默认：0.8）</string>
+			<string>角标阴影（默认：0.8）</string>
 		</dict>
 		<dict>
 			<key>cell</key>
