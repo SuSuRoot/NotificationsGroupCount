@@ -8,7 +8,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Tweak Activation</string>
+			<string>插件激活</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -20,13 +20,13 @@
 			<key>key</key>
 			<string>isTweakEnabled</string>
 			<key>label</key>
-			<string>Tweak Enabled</string>
+			<string>插件启用</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>BADGE STYLE</string>
+			<string>徽章样式</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -38,7 +38,7 @@
 			<key>key</key>
 			<string>isCustomColors</string>
 			<key>label</key>
-			<string>Custom Colors</string>
+			<string>自定义颜色</string>
 			<key>nestedEntryCount</key>
 			<integer>2</integer>
 		</dict>
@@ -47,32 +47,32 @@
 			<string>PSLinkCell</string>
 			<key>cellClass</key>
 			<string>NGCColorPickerCell</string>
+			<key>defaults</key>
+			<string>com.0xkuj.notificationsgroupcountprefs</string>
 			<key>fallback</key>
 			<string>FFFFFF</string>
 			<key>key</key>
 			<string>badgeBackgroundColor</string>
+			<key>label</key>
+			<string>徽章背景颜色</string>
 			<key>supportAlpha</key>
 			<true/>
-			<key>defaults</key>
-			<string>com.0xkuj.notificationsgroupcountprefs</string>
-			<key>label</key>
-			<string>Badge Background Color</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
 			<key>cellClass</key>
 			<string>NGCColorPickerCell</string>
+			<key>defaults</key>
+			<string>com.0xkuj.notificationsgroupcountprefs</string>
 			<key>fallback</key>
 			<string>FFFFFF</string>
 			<key>key</key>
 			<string>badgeTextColor</string>
+			<key>label</key>
+			<string>徽章文本颜色</string>
 			<key>supportAlpha</key>
 			<true/>
-			<key>defaults</key>
-			<string>com.0xkuj.notificationsgroupcountprefs</string>
-			<key>label</key>
-			<string>Badge Text Color</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -85,8 +85,8 @@
 			<string>badgeStyle</string>
 			<key>validTitles</key>
 			<array>
-				<string>Dynamic Icon Colors</string>
-				<string>Dynamic Wallpaper Colors</string>
+				<string>动态图标颜色</string>
+				<string>动态壁纸颜色</string>
 			</array>
 			<key>validValues</key>
 			<array>
@@ -98,41 +98,41 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>BADGE SHADOW OPACITY</string>
+			<string>徽章阴影透明度</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>Badge Shadow (Default: 0.8)</string>
+			<string>徽章阴影（默认：0.8）</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSSliderCell</string>
 			<key>default</key>
-			<real>0.8</real>
-			<key>min</key>
-			<real>0.0</real>
-			<key>max</key>
-			<real>1.0</real>
-			<key>showValue</key>
-			<true/>
-			<key>isSegmented</key>
-			<true/>
-			<key>segmentCount</key>
-			<integer>10</integer>
+			<real>0.80000000000000004</real>
 			<key>defaults</key>
 			<string>com.0xkuj.notificationsgroupcountprefs</string>
+			<key>isSegmented</key>
+			<true/>
 			<key>key</key>
 			<string>shadowOpacity</string>
+			<key>max</key>
+			<real>1</real>
+			<key>min</key>
+			<real>0.0</real>
+			<key>segmentCount</key>
+			<integer>10</integer>
+			<key>showValue</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>MISCELLANEOUS</string>
 			<key>footerText</key>
-			<string>Restore to default settings - will restore your tweak preferences back to first-time configuration</string>
+			<string>恢复到默认设置 - 将恢复您的插件偏好设置为首次配置</string>
+			<key>label</key>
+			<string>杂项</string>
 		</dict>
 		<dict>
 			<key>action</key>
@@ -142,7 +142,7 @@
 			<key>icon</key>
 			<string>respring.png</string>
 			<key>label</key>
-			<string>Restore to default settings</string>
+			<string>恢复到默认设置</string>
 		</dict>
 		<dict>
 			<key>action</key>
@@ -152,42 +152,10 @@
 			<key>icon</key>
 			<string>respring.png</string>
 			<key>label</key>
-			<string>Respring</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>ABOUT ME</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>donationLink</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>icon</key>
-			<string>donate.png</string>
-			<key>label</key>
-			<string>Buy me a beer ;)</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>openTwitter</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>icon</key>
-			<string>Twitter.png</string>
-			<key>label</key>
-			<string>Follow me on Twitter</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>Made by: 0xkuj | v1.0.1</string>
+			<string>注销</string>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>NotificationsGroupCount</string>
+	<string>通知组计数</string>
 </dict>
 </plist>
