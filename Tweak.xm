@@ -218,6 +218,20 @@ static void loadPrefs() {
 }
 %end
 
+// fix ghosting badges in 0 alpha setups
+%hook NCNotificationShortLookView 
+- (void)setNotificationContentViewHidden:(BOOL)arg1 {
+	%orig;
+	if (arg1 == YES) {
+		for (id view in self.subviews) {
+			if ([view isKindOfClass:NSClassFromString(@"NGCBadgeView")]) {
+				[((NGCBadgeView *)view) setBadgeText:@"0"];
+			}
+		}
+	}
+}
+%end
+
 // if we ever decide to push text.. start here
 // %hook NCNotificationSeamlessContentView
 // - (void)layoutSubviews {
