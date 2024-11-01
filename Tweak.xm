@@ -149,7 +149,6 @@ static void loadPrefs() {
 		if (![csnv respondsToSelector:@selector(_notificationShortLookViewIfLoaded)]) {
 			return;
 		}
-
 		NCNotificationShortLookView *shortLookView = [csnv _notificationShortLookViewIfLoaded];
 		NSString *numberString = [NSString stringWithFormat:@"%lu",[self count]];
 		BOOL alreadyAdded = NO;
