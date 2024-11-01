@@ -3,6 +3,10 @@
 CGFloat ngcBadgeSizeLowerThan10 = 20;
 CGFloat ngcBadgeSizeHigherThan10 = 30;
 
+@interface NCNotificationShortLookView : UIView
+- (BOOL)isNotificationContentViewHidden;
+@end 
+
 @interface NGCBadgeView ()
 @property (nonatomic, strong) UILabel *badgeLabel;
 @property (nonatomic, retain) MTMaterialView *blurView;
@@ -39,25 +43,22 @@ CGFloat ngcBadgeSizeHigherThan10 = 30;
         [self addSubview:self.badgeLabel];
         [self setBadgeText:text];
         
-        //Add shadow to the main view
         self.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.layer.shadowOffset = CGSizeMake(0, 2);  // Slightly larger offset for more depth
-        self.layer.shadowRadius = 3.0;  // Increased radius for softer shadow
+        self.layer.shadowOffset = CGSizeMake(0, 2);
+        self.layer.shadowRadius = 3.0;  
         self.layer.shadowOpacity = shadowOpacity;
-        self.clipsToBounds = NO;  // Important to show the shadow
+        self.clipsToBounds = NO;  
     }
     return self;
 }
 
-// - (void)layoutSubviews {
-//     [super layoutSubviews];
-//     self.badgeLabel.frame = self.bounds;
-//     if (self.frame.size.width < self.frame.size.height) {
-//         CGRect newFrame = self.frame;
-//         newFrame.size.width = self.frame.size.height;
-//         self.frame = newFrame;
-//     }
-// }
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    // fix ghosting badge (hopefully)
+    if ([((NCNotificationShortLookView*)self.superview) isNotificationContentViewHidden]) {
+        [self removeFromSuperview];
+    }
+}
 
 - (void)setBadgeText:(NSString *)text {
     _badgeText = [text copy];

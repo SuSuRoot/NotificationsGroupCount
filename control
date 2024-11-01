@@ -1,6 +1,6 @@
 Package: com.0xkuj.notificationsgroupcount
 Name: NotificationsGroupCount
-Version: 1.0.0
+Version: 1.0.1
 Architecture: iphoneos-arm
 Description: Count those notifications inside Apple notifications grouping!
 Maintainer: 0xkuj
