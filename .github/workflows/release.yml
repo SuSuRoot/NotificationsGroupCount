@@ -1,13 +1,6 @@
 name: CI
 
-on:
-  push:
-    branches:
-      - main
-      - "release/*"
-  pull_request:
-    branches:
-      - main
+on: [push]
 
 env:
   THEOS_REPO: https://github.com/theos/theos
@@ -18,64 +11,65 @@ jobs:
   build:
     runs-on: macos-latest
 
-    strategy:
-      matrix:
-        node: [14.x, 16.x] # 示例：支持多版本 Node.js，如果适用
-        include:
-          - project: default
-
     steps:
-      - name: Checkout repository
+      - name: 检出代码
         uses: actions/checkout@v3
         with:
           submodules: true
 
-      - name: Set up environment variables
+      - name: 设置环境变量
         run: |
           echo "upstream_heads=$(git ls-remote $THEOS_REPO | head -n 1 | cut -f 1)-$(git ls-remote $SDKS_REPO | head -n 1 | cut -f 1)" >> $GITHUB_ENV
 
-      - name: Restore cache
+      - name: 恢复缓存
         id: cache
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/$CACHE_DIR
           key: ${{ runner.os }}-theos-${{ env.upstream_heads }}
+          restore-keys: |
+            ${{ runner.os }}-theos-
 
-      - name: Install dependencies
+      - name: 安装依赖（如果未命中缓存）
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          # 根据项目需要安装依赖，例如：
+          brew update
           brew install theos
-          # 或其他依赖安装命令
+          # 根据项目需要安装其他依赖
 
-      - name: Set up Theos
+      - name: 设置 Theos
         uses: Randomblock1/theos-action@main
         with:
           theos_path: ${{ github.workspace }}/$CACHE_DIR
 
-      - name: Build package
+      - name: 缓存依赖
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          # 例如，缓存 CocoaPods 依赖
+          pod install
+
+      - name: 构建包
         run: |
           rm -f packages/*
           make package FINALPACKAGE=1
           make package THEOS_PACKAGE_SCHEME=rootless FINALPACKAGE=1
 
-      - name: Upload Deb packages
+      - name: 上传 Deb 包
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: DebPackages
           path: packages/*.deb
 
-      - name: Upload Logs
+      - name: 上传构建日志（构建失败时）
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: BuildLogs
           path: logs/*.log
 
-      - name: Notify on Failure
-        if: failure()
-        uses: some-notification-action@v1
-        with:
-          message: "Build failed for `${{ github.repository }}` on `${{ github.ref }}`."
+      - name: 清理缓存（可选）
+        run: |
+          # 根据需要清理缓存文件以节省空间
+          rm -rf ${{ github.workspace }}/$CACHE_DIR
 
